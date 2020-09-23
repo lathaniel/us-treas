@@ -4,6 +4,11 @@ import requests
 import pandas as pd
 
 class Rate:
+  ''' U.S. Treasury Rate data
+
+  Can be one of many types available on treasury.gov
+
+  '''
   def __init__(self):
     self.domain = 'https://www.treasury.gov'
     self.serverPath = 'resource-center/data-chart-center/interest-rates/pages'
