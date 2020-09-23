@@ -10,7 +10,7 @@ us-treas documentation
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: ustreasury.rates
+.. automodule:: ustreas.rates
    :members:
 
 
