@@ -10,8 +10,20 @@ us-treas documentation
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: ustreas.rates
+.. autoclass:: ustreas.rates.Rate
    :members:
+
+.. autoclass:: ustreas.rates.YieldCurve
+   :members:
+   :show-inheritance:
+
+.. autoclass:: ustreas.rates.Bill
+   :members:
+   :show-inheritance:
+
+.. autoclass:: ustreas.rates.LongTerm
+   :members:
+   :show-inheritance:
 
 
 Indices and tables

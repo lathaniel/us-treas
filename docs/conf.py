@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'US Treasury Rates'
-copyright = '2020, Lathaniel'
-author = 'Lathaniel'
+copyright = '2020, Adam Lathan'
+author = 'Adam Lathan'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0\\'
+release = '0.0.0'
 
 
 # -- General configuration ---------------------------------------------------
