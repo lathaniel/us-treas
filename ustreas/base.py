@@ -1,6 +1,7 @@
 import re as _re
 import pandas as _pd
 import xml.etree.ElementTree as _ET
+import warnings
 
 from . import utils
 
@@ -22,16 +23,28 @@ class Rate:
     TODO: Allow for term selection
 
     Args:
-      period: Specifies the period for which to request rates
-      term: Specifies the desired term length, if applicable (e.g. 30)
-      viewStyle: Specifies whether to grab from the TextView site or the XmlView site
-        XmlView contains more data and can be retrieved slightly quicker.
-        TextView represents the "standard" data one would see, and has more conventional column names.      
+      period (str or int): Specifies the period for which to request rates. Can be one of 'current' or 'YYYY':
+
+          * *current* will return all available rates for the current month.
+          * *2020* would return all available rates for the year 2020.
+        
+      term: Specifies the desired term length, if applicable (e.g. 30). Logic for this is not yet built in.
+      viewStyle: 
+        Specifies whether to grab data from the TextView site or the XmlView site.
+        
+          * XmlView site usually contains more data attributes.
+          * TextView represents the "standard" data, i.e. most comparable to what one would see on the website.
 
     Returns:
-      Pandas Dataframe with requested rates
+      Pandas Dataframe with requested rates.
 
     '''
+    if not isinstance(period, (str, int)):
+      raise TypeError("period must be of type str or int")
+
+    # Convert period to string, in case user provided int
+    period = str(period)
+    
     if period.lower()=='current':
       q = ''
     
@@ -50,9 +63,12 @@ class Rate:
       return _pd.read_html(url)[1] # not sure if it will always be index 1
     
     xml = utils.getPageText(url)
-    parsed = __parseTreasuryXML(xml)
+    parsed = self.__parseTreasuryXML(xml)
+    df = _pd.json_normalize(parsed)
+    if not len(df):
+      warnings.warn("No data found for {}. There may not be available treasury data for that period.".format(period))
 
-    return _pd.json_normalize(parsed)
+    return df
   
   def __get_info(self):
     # TODO: also, print it prettier?
