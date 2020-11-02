@@ -28,8 +28,8 @@ class Rate:
           * *current* will return all available rates for the current month.
           * *2020* would return all available rates for the year 2020.
         
-      term: Specifies the desired term length, if applicable (e.g. 30). Logic for this is not yet built in.
-      viewStyle: 
+      term (str): Specifies the desired term length, if applicable (e.g. 30). Logic for this is not yet built in.
+      viewStyle (str): 
         Specifies whether to grab data from the TextView site or the XmlView site.
         
           * XmlView site usually contains more data attributes.
@@ -44,7 +44,7 @@ class Rate:
 
     # Convert period to string, in case user provided int
     period = str(period)
-    
+
     if period.lower()=='current':
       q = ''
     
