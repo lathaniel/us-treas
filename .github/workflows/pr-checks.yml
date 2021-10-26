@@ -22,6 +22,18 @@ jobs:
       - name: Run Linter
         run: markdownlint **/*.md
 
+  lint_python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v1
+
   sphinx_docs_build:
     runs-on: ubuntu-latest
     steps:
