@@ -19,8 +19,20 @@ jobs:
       - name: Install Markdown Linter
         run: npm install -g markdownlint-cli
 
-      - name: Run Linter
+      - name: Run Markdown Linter (markdownlint-cli)
         run: markdownlint **/*.md
+
+  lint_python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
+      - name: Run Python Linter (flake8)
+        uses: py-actions/flake8@v1
 
   sphinx_docs_build:
     runs-on: ubuntu-latest

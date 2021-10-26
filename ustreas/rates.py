@@ -1,33 +1,39 @@
 from .base import Rate
 
+
 class YieldCurve(Rate):
-  ''' Yield Curve Rate data
+    ''' Yield Curve Rate data
 
-  Args:
-    real (bool): Specifies whether to request "real" rates or not.
+    Args:
+      real (bool): Specifies whether to request "real" rates or not.
 
-  '''
-  def __init__(self, real = False):
-    super().__init__()
-    rateType = 'real' if real==True else ''
-    self.data = '{}yield'.format(rateType)
+    '''
+
+    def __init__(self, real=False):
+        super().__init__()
+        rateType = 'real' if real is True else ''
+        self.data = '{}yield'.format(rateType)
+
 
 class Bill(Rate):
-  '''Bill Rate data
+    '''Bill Rate data
 
-  '''
-  def __init__(self):
-    super().__init__()
-    self.data = 'billrates'
+    '''
+
+    def __init__(self):
+        super().__init__()
+        self.data = 'billrates'
+
 
 class LongTerm(Rate):
-  '''Long Term Rate data
+    '''Long Term Rate data
 
-  Args:
-    real (bool): Specifies whether to request "real" rates or not.
+    Args:
+      real (bool): Specifies whether to request "real" rates or not.
 
-  '''
-  def __init__(self, real = False):
-    super().__init__()
-    rateType = 'real' if real else ''
-    self.data = '{}longtermrate'.format(rateType)
+    '''
+
+    def __init__(self, real=False):
+        super().__init__()
+        rateType = 'real' if real else ''
+        self.data = '{}longtermrate'.format(rateType)
