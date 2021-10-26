@@ -13,10 +13,10 @@ When it is, though, you'll be able to install with ``pip``:
 
 Requirements
 ------------
-This project uses the  following packages:
+This project uses the  following Python packages:
 
-* `pandas <https://pandas.pydata.org/>`_
-* `requests`_
+* `Pandas <https://pandas.pydata.org/>`_
+* `Requests <https://docs.python-requests.org/en/latest/>`_
 
 They can be installed using pip:
 
