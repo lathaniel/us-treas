@@ -7,7 +7,7 @@ This project provides a way to pull US treasury data in as a Pandas DataFrame
 ``us-treas`` is **not** available on `PYPI <https://pypi.python.org/pypi/>`_.
 When it is, though, you'll be able to install with ``pip``:
 
-```
+``` bash
 pip install us-treas
 ```
 
@@ -20,6 +20,6 @@ This project uses the  following Python packages:
 
 They can be installed using pip:
 
-```
+``` bash
 pip install -r requirements.txt
 ```

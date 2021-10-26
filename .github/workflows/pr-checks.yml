@@ -1,0 +1,31 @@
+name: "Pull Request Docs Check"
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint_markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+      
+      - name: Install Markdown Linter
+        run: npm install -g markdownlint-cli
+
+      - name: Run Linter
+        run: markdownlint **/*.md
+
+  sphinx_docs_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
