@@ -4,18 +4,18 @@ API Reference
 Classes
 -------
 
-.. autoclass:: ustreas.rates.Rate
+.. autoclass:: src.ustreas.rates.Rate
    :members:
 
-.. autoclass:: ustreas.rates.YieldCurve
-   :members:
-   :show-inheritance:
-
-.. autoclass:: ustreas.rates.Bill
+.. autoclass:: src.ustreas.rates.YieldCurve
    :members:
    :show-inheritance:
 
-.. autoclass:: ustreas.rates.LongTerm
+.. autoclass:: src.ustreas.rates.Bill
+   :members:
+   :show-inheritance:
+
+.. autoclass:: src.ustreas.rates.LongTerm
    :members:
    :show-inheritance:
 
