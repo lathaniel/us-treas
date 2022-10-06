@@ -1,0 +1,40 @@
+name: Publish Sphinx Docs
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs: 
+  build-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+
+      - name: Commit documentation changes
+      env:
+        GIT_SECRET: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git clone https://user:$GIT_SECRET@github.com/us-treas.git --branch docs --single-branch docs
+        cp -r docs/_build/html/* docs/
+        cd docs
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add --all
+        git commit -m "Update documentation" -a || true
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: docs
+        directory: docs
+        github_token: $GIT_SECRET
+  
