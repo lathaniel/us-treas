@@ -32,7 +32,9 @@ jobs:
         with:
           python-version: "3.8"
       - name: Run Python Linter (flake8)
-        uses: py-actions/flake8@v1
+        uses: py-actions/flake8@v2
+        with:
+          path: src
 
   sphinx_docs_build:
     runs-on: ubuntu-latest
@@ -41,3 +43,19 @@ jobs:
       - uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.8"
+          cashe: 'pip'
+      
+      - name: Install Dependencies
+        run:
+          pip install -r requirements.txt
