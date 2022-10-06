@@ -15,6 +15,8 @@ def getPageText(url):
 def unescape(s):
     s = s.replace("&lt;", "<")
     s = s.replace("&gt;", ">")
-    # this has to be last:
+
+    # this must be last:
     s = s.replace("&amp;", "&")
+
     return s
